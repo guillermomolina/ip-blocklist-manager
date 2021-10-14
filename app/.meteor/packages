@@ -31,7 +31,7 @@ aldeed:autoform@7.0.0
 sacha:spin
 
 # Account management
-accounts-ui@1.4.0
+accounts-ui@1.4.1
 accounts-password@2.1.0
 
 # Routing
@@ -52,3 +52,4 @@ aldeed:tabular
 insecure
 dburles:collection-helpers
 meteorhacks:picker
+aldeed:schema-index
