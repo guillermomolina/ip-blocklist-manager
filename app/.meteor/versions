@@ -4,6 +4,7 @@ accounts-ui@1.4.1
 accounts-ui-unstyled@1.5.1
 aldeed:autoform@7.0.0
 aldeed:collection2@3.5.0
+aldeed:schema-index@3.0.0
 aldeed:tabular@2.1.1
 allow-deny@1.1.0
 arillo:flow-router-helpers@0.5.2
