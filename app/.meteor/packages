@@ -49,7 +49,6 @@ juliancwirko:postcss@2.0.8
 
 communitypackages:autoform-bootstrap3
 aldeed:tabular
-aldeed:delete-button
 insecure
 dburles:collection-helpers
 meteorhacks:picker

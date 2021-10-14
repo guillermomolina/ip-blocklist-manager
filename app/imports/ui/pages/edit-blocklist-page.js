@@ -13,7 +13,7 @@ AutoForm.hooks({
   },
 });
 
-Template.Edit_Blocklist_Page.onCreated(function() {
+Template.Edit_Blocklist_Page.onCreated(function () {
   this.subscribe('blocklists');
 });
 
@@ -27,4 +27,18 @@ Template.Edit_Blocklist_Page.events({
   'click .cancel': function () {
     history.back();
   },
+  'click .delete': function (event, template) {
+    const blocklist_id = FlowRouter.getParam('_blocklist_id')
+    const blocklist = BlocklistCollection.findOne(blocklist_id);
+    if (blocklist) {
+      if (confirm('Really delete "' + blocklist.name + '"?')) {
+        Meteor.call('blocklists.remove', blocklist._id, function (err, res) {
+          if (err)
+            alert(err);
+          else
+            FlowRouter.go('List_Blocklist_Page');
+        });
+      }
+    }
+  }
 });

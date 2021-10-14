@@ -19,11 +19,11 @@
     <div class="panel-heading">Blocklist</div>
     <div class="panel-body">
       {{> afQuickFields
-        template="bootstrap3-horizontal"
-        label-class="col-sm-1 text-right"
-        input-col-class="col-sm-11"
-        }}
-  </div>
+      template="bootstrap3-horizontal"
+      label-class="col-sm-1 text-right"
+      input-col-class="col-sm-11"
+      }}
+    </div>
     {{#if canShow}}
     <div class="panel-footer">
       <div class="dt-buttons btn-group" role="group" aria-label="Actions">
@@ -32,14 +32,8 @@
           Copy Link
         </button>
         <button type="button" class="btn btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i> Edit</button>
-        {{#quickRemoveButton
-        collection="Collections.BlocklistCollection"
-        _id=getId
-        onError=onError
-        onSuccess=onSuccess
-        beforeRemove=beforeRemove
-        class="btn btn-danger"
-        }}<i class="far fa-trash-alt"></i> Delete{{/quickRemoveButton}}
+        <button type="button" class="btn btn-danger delete"><i class="fas fa-trash-alt" aria-hidden="true"></i>
+          Delete</button>
       </div>
     </div>
     {{/if}}
@@ -65,14 +59,8 @@
   <div class="btn-group" role="group" aria-label="Actions">
     <button type="button" class="btn btn-xs btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i>
       Edit</button>
-    {{#quickRemoveButton
-    collection="Collections.IpAddressCollection"
-    _id=this._id
-    onError=onError
-    onSuccess=onSuccess
-    beforeRemove=beforeRemove
-    class="btn btn-xs btn-danger"
-    }}<i class="far fa-trash-alt"></i> Delete{{/quickRemoveButton}}
+    <button type="button" class="btn btn-xs btn-danger delete"><i class="fas fa-trash-alt" aria-hidden="true"></i>
+      Delete</button>
   </div>
   {{/if}}
 </template>

@@ -13,17 +13,13 @@
 
 <template name="List_Blocklist_Actions_Cell">
   <div class="btn-group" role="group" aria-label="Actions">
-    <button type="button" class="btn btn-xs btn-primary show"><i class="far fa-eye" aria-hidden="true"></i> Show</button>
+    <button type="button" class="btn btn-xs btn-primary show"><i class="far fa-eye" aria-hidden="true"></i>
+      Show</button>
     {{#if canShow}}
-    <button type="button" class="btn btn-xs btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i> Edit</button>
-    {{#quickRemoveButton
-    collection="Collections.BlocklistCollection"
-    _id=this._id
-    onError=onError
-    onSuccess=onSuccess
-    beforeRemove=beforeRemove
-    class="btn btn-xs btn-danger"
-    }}<i class="far fa-trash-alt" aria-hidden="true"></i> Delete{{/quickRemoveButton}}
+    <button type="button" class="btn btn-xs btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i>
+      Edit</button>
+    <button type="button" class="btn btn-xs btn-danger delete"><i class="fas fa-trash-alt" aria-hidden="true"></i>
+      Delete</button>
     {{/if}}
   </div>
 </template>

@@ -18,28 +18,6 @@ Template.Show_Blocklist_Form.helpers({
   },
   getId() {
     return FlowRouter.getParam('_blocklist_id');
-  },
-  onError: function () {
-    return function (error) {
-      console.log('Error', error);
-    };
-  },
-  onSuccess: function () {
-    return function (result) {
-      console.log('Deleted');
-      FlowRouter.go('List_Blocklist_Page');
-    };
-  },
-  beforeRemove: function () {
-    return function (collection, id) {
-      var doc = collection.findOne(id);
-      if (confirm('Really delete "' + doc.name + '"?')) {
-        const self = this;
-        Meteor.call('ipAddresses.removeFromBlocklist', doc._id, function (err, res) {
-          if (!err) self.remove();
-        });
-      }
-    };
   }
 });
 
@@ -52,6 +30,20 @@ Template.Show_Blocklist_Form.events({
     const link = window.location.protocol + "//" + window.location.host + FlowRouter.current().path + '/list';
     navigator.clipboard.writeText(link);
     console.log(`Copied ${link} to clipboard`);
+  },
+  'click .delete': function (event, template) {
+    const blocklist_id = FlowRouter.getParam('_blocklist_id')
+    const blocklist = BlocklistCollection.findOne(blocklist_id);
+    if (blocklist) {
+      if (confirm('Really delete "' + blocklist.name + '"?')) {
+        Meteor.call('blocklists.remove', blocklist._id, function (err, res) {
+          if (err)
+            alert(err);
+          else
+            history.back();
+        });
+      }
+    }
   },
 });
 
@@ -76,24 +68,6 @@ Template.List_IpAddress_Table.helpers({
 Template.List_IpAddress_Actions_Cell.helpers({
   canShow: function () {
     return !!Meteor.user();
-  },
-  onError: function () {
-    return function (error) {
-      console.log('Error', error);
-    };
-  },
-  onSuccess: function () {
-    return function (result) {
-      console.log('Deleted');
-    };
-  },
-  beforeRemove: function () {
-    return function (collection, id) {
-      var doc = collection.findOne(id);
-      if (confirm('Really delete "' + doc.address + '"?')) {
-        this.remove();
-      }
-    };
   }
 });
 
@@ -103,6 +77,14 @@ Template.List_IpAddress_Actions_Cell.events({
       _blocklist_id: this.blocklist_id,
       _ipAddress_id: this._id
     });
+  },
+  'click .delete': function (event, template) {
+    if (confirm('Really delete "' + this.address + '"?')) {
+      Meteor.call('ipAddresses.remove', this._id, function (err, res) {
+        if (err)
+          alert(err);
+      });
+    }
   }
 });
 

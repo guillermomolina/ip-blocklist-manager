@@ -5,6 +5,11 @@ import { IpAddressSchema } from './IpAddressSchema';
 import { BlocklistCollection } from '../blocklist/BlocklistCollection'
 
 Meteor.methods({
+    'ipAddresses.remove': function (ipAddress_id) {
+        check(ipAddress_id, String);
+
+        IpAddressCollection.remove(ipAddress_id);
+    },
     'ipAddresses.removeFromBlocklist': function (blocklist_id) {
         check(blocklist_id, String);
 
@@ -61,5 +66,5 @@ Meteor.methods({
                 return err;
             return Meteor.call('ipAddresses.insertMany', blocklist_id, addresses);
         });
-    }
+    },
 });
