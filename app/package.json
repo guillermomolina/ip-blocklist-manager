@@ -1,7 +1,7 @@
 {
   "name": "ip-blocklist-manager",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "start": "meteor --no-release-check --settings ../config/settings.development.json",
     "lint": "eslint --quiet ./imports"

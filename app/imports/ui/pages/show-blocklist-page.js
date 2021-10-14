@@ -27,7 +27,7 @@ Template.Show_Blocklist_Form.events({
   },
   'click .copyToClipboard': function (event) {
     event.target.blur();
-    const link = window.location.protocol + "//" + window.location.host + FlowRouter.current().path + '/list';
+    const link = window.location.protocol + "//" + window.location.host + FlowRouter.current().path + '/list.txt';
     navigator.clipboard.writeText(link);
     console.log(`Copied ${link} to clipboard`);
   },
