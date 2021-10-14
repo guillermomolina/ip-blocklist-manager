@@ -1,0 +1,29 @@
+<template name="List_Blocklist_Page">
+  <main role="main">
+    <div class="ui text container-fluid">
+      <div class="panel panel-default">
+        <div class="panel-heading">Blocklists ({{ blocklistCount }})</div>
+        <div class="panel-body">
+          {{> tabular table=TabularTables.BlocklistTable class="table table-striped table-bordered table-condensed"}}
+        </div>
+      </div>
+    </div>
+  </main>
+</template>
+
+<template name="List_Blocklist_Actions_Cell">
+  <div class="btn-group" role="group" aria-label="Actions">
+    <button type="button" class="btn btn-xs btn-primary show"><i class="far fa-eye" aria-hidden="true"></i> Show</button>
+    {{#if canShow}}
+    <button type="button" class="btn btn-xs btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i> Edit</button>
+    {{#quickRemoveButton
+    collection="Collections.BlocklistCollection"
+    _id=this._id
+    onError=onError
+    onSuccess=onSuccess
+    beforeRemove=beforeRemove
+    class="btn btn-xs btn-danger"
+    }}<i class="far fa-trash-alt" aria-hidden="true"></i> Delete{{/quickRemoveButton}}
+    {{/if}}
+  </div>
+</template>

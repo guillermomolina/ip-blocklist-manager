@@ -1,0 +1,47 @@
+<template name="Upload_IpAddress_Page">
+  {{#If_Logged_In}}
+  <main role="main">
+    <div class="container-fluid">
+      <form>
+        <div class="panel panel-default">
+          <div class="panel-heading">Upload IP address</div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input id="fileName" class="form-control" type="text" />
+                  <div class="input-group-btn">
+                    <label for="uploadInput" class="btn btn-warning"><i class="fa fa-upload" aria-hidden="true"></i>
+                      Load</label>
+                    <input id="uploadInput" type="file" class="btn btn-default" style="visibility:hidden;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <textarea id="uploadedText" name="uploadInput" class="has-error form-control" rows=5
+                  value="{{getFileText}}"></textarea><br>
+                {{#each statusLine in getFileStatus}}
+                <span class="help-block" style="color: #a94442;">{{ statusLine }}</span>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="btn-group" role="group" aria-label="Actions">
+              <button type="button" class="btn btn-success add"><i class="fa fa-check-double" aria-hidden="true"></i>
+                Add</button>
+              <button type="button" class="btn btn-warning replace"><i class="fa fa-check-square" aria-hidden="true"></i>
+                Replace</button>
+              <button type="button" class="btn btn-primary cancel"><i class="fa fa-times" aria-hidden="true"></i>
+                Cancel</button>
+              <button type="reset" class="btn btn-info reset"><i class="fa fa-sync" aria-hidden="true"></i> Reset</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+  {{/If_Logged_In}}
+</template>

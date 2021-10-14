@@ -1,0 +1,78 @@
+<template name="Show_Blocklist_Page">
+  <main role="main">
+    <div class="container-fluid">
+      {{> Show_Blocklist_Form}}
+      {{> List_IpAddress_Table}}
+    </div>
+  </main>
+</template>
+
+<template name="Show_Blocklist_Form">
+  {{#autoForm
+  collection="Collections.BlocklistCollection"
+  template="bootstrap3-horizontal"
+  id="Show_Blocklist_Form"
+  type="readonly"
+  doc=getDoc
+  }}
+  <div class="panel panel-default">
+    <div class="panel-heading">Blocklist</div>
+    <div class="panel-body">
+      {{> afQuickFields
+        template="bootstrap3-horizontal"
+        label-class="col-sm-1 text-right"
+        input-col-class="col-sm-11"
+        }}
+  </div>
+    {{#if canShow}}
+    <div class="panel-footer">
+      <div class="dt-buttons btn-group" role="group" aria-label="Actions">
+        <button type="button" class="btn btn-default copyToClipboard">
+          <i class="fas fa-clipboard" aria-hidden="true"></i>
+          Copy Link
+        </button>
+        <button type="button" class="btn btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i> Edit</button>
+        {{#quickRemoveButton
+        collection="Collections.BlocklistCollection"
+        _id=getId
+        onError=onError
+        onSuccess=onSuccess
+        beforeRemove=beforeRemove
+        class="btn btn-danger"
+        }}<i class="far fa-trash-alt"></i> Delete{{/quickRemoveButton}}
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  {{/autoForm}}
+</template>
+
+<template name="List_IpAddress_Table">
+  <div class="panel panel-default">
+    <div class="panel-heading">IP Addresses ({{ipAddressesCount}})</div>
+    <div class="panel-body">
+      {{> tabular
+      table=TabularTables.IpAddressTable
+      selector=selector
+      class="table table-striped table-bordered table-condensed"
+      }}
+    </div>
+  </div>
+</template>
+
+<template name="List_IpAddress_Actions_Cell">
+  {{#if canShow}}
+  <div class="btn-group" role="group" aria-label="Actions">
+    <button type="button" class="btn btn-xs btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i>
+      Edit</button>
+    {{#quickRemoveButton
+    collection="Collections.IpAddressCollection"
+    _id=this._id
+    onError=onError
+    onSuccess=onSuccess
+    beforeRemove=beforeRemove
+    class="btn btn-xs btn-danger"
+    }}<i class="far fa-trash-alt"></i> Delete{{/quickRemoveButton}}
+  </div>
+  {{/if}}
+</template>

@@ -1,0 +1,34 @@
+<template name="Add_IpAddress_Page">
+  {{#If_Logged_In}}
+  <main role="main">
+    <div class="ui text container-fluid">
+      {{#autoForm
+      collection="Collections.IpAddressCollection"
+      template="bootstrap3-horizontal"
+      id="Add_IpAddress_Form"
+      type="insert"
+      validation="keyup"
+      }}
+      <div class="panel panel-default">
+        <div class="panel-heading">Add IP address</div>
+        <div class="panel-body">
+          {{> afQuickFields
+          template="bootstrap3-horizontal"
+          label-class="col-sm-1 text-right"
+          input-col-class="col-sm-11"
+          }}
+        </div>
+        <div class="panel-footer">
+          <div class="btn-group" role="group" aria-label="Actions">
+            <button type="submit" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+            <button type="button" class="btn btn-primary cancel"><i class="fa fa-times" aria-hidden="true"></i>
+              Cancel</button>
+            <button type="reset" class="btn btn-info"><i class="fa fa-sync" aria-hidden="true"></i> Reset</button>
+          </div>
+        </div>
+      </div>
+      {{/autoForm}}
+    </div>
+  </main>
+  {{/If_Logged_In}}
+</template>
