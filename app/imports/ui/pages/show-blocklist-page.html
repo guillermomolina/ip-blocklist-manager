@@ -15,7 +15,7 @@
   type="readonly"
   doc=getDoc
   validation="keyup"
-}}
+  }}
   <div class="panel panel-default">
     <div class="panel-heading">Blocklist</div>
     <div class="panel-body">
@@ -25,19 +25,19 @@
       input-col-class="col-sm-11"
       }}
     </div>
-    {{#if canShow}}
     <div class="panel-footer">
       <div class="dt-buttons btn-group" role="group" aria-label="Actions">
         <button type="button" class="btn btn-default copyToClipboard">
           <i class="fas fa-clipboard" aria-hidden="true"></i>
-          Copy Link
+          Copy link
         </button>
+        {{#if canShow}}
         <button type="button" class="btn btn-success edit"><i class="fas fa-edit" aria-hidden="true"></i> Edit</button>
         <button type="button" class="btn btn-danger delete"><i class="fas fa-trash-alt" aria-hidden="true"></i>
           Delete</button>
+        {{/if}}
       </div>
     </div>
-    {{/if}}
   </div>
   {{/autoForm}}
 </template>
