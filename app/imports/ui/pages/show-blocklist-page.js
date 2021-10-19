@@ -27,8 +27,10 @@ Template.Show_Blocklist_Form.events({
   },
   'click .copyToClipboard': function (event) {
     event.target.blur();
-//    const link = window.location.protocol + "//" + window.location.host + FlowRouter.current().path + '/list.txt';
-    const link = 'http://' + window.location.host + ':8081' + FlowRouter.current().path + '/list.txt';
+    // const link = window.location.protocol + "//" + window.location.host + FlowRouter.current().path + '/list.txt';
+    const blocklist_id = FlowRouter.getParam('_blocklist_id')
+    const blocklist = BlocklistCollection.findOne(blocklist_id);
+    const link = 'http://' + window.location.hostname + ':8081/' + blocklist.name + '/list.txt';
     navigator.clipboard.writeText(link);
     console.log(`Copied ${link} to clipboard`);
   },
