@@ -1,3 +1,7 @@
+## Version 0.2.0
+
+
+
 ## Version 0.1.3
 
 - Make "Copy Link" button public
