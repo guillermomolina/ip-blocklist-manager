@@ -1,5 +1,6 @@
 ## Version 0.2.0
 
+- Restrict list names to include [a-z,A-Z,0-9,_,-]
 
 
 ## Version 0.1.3

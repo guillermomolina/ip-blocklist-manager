@@ -2,15 +2,18 @@ import { BlocklistCollection } from './BlocklistCollection';
 import SimpleSchema from "simpl-schema";
 SimpleSchema.extendOptions(['autoform']);
 
+export const RegEx = {
+  Name: new RegExp("^[a-zA-Z0-9-_]+$")
+};
 export const BlocklistSchema = new SimpleSchema({
   name: {
     label: 'Name',
     type: String,
+    regEx: RegEx.Name,
     max: 50,
     index: true,
-    unique: true,
     autoform: {
-      placeholder: 'List Name',
+      placeholder: 'List_Name',
     },
     custom() {
       if (Meteor.isClient) {
