@@ -19,7 +19,7 @@ function getRandomIp() {
 
 if (BlocklistCollection.find().count() === 0) {
   for(list=1; list <= 12; list++) {
-    const list_name = `List ${list}`
+    const list_name = `list_${list}`
     blocklist_id = BlocklistCollection.insert({ 
       name:  list_name,
       description: `This is list ${list_name} and it's awesome`
