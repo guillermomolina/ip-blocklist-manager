@@ -1,6 +1,7 @@
 ## Version 0.1.3
 
 - Make "Copy Link" button public
+- Hardocde copied URL to http://<HOSTNAME>:8081/<PATH>
 
 ## Version 0.1.2
 
