@@ -1,3 +1,7 @@
+## Version 0.2.1
+
+- Undo Hardcode copied URL
+
 ## Version 0.2.0
 
 - Restrict list names to include [a-z,A-Z,0-9,_,-]
@@ -6,7 +10,7 @@
 ## Version 0.1.3
 
 - Make "Copy Link" button public
-- Hardocde copied URL to http://<HOSTNAME>:8081/<PATH>
+- Hardcode copied URL to http://<HOSTNAME>:8081/<PATH>
 
 ## Version 0.1.2
 

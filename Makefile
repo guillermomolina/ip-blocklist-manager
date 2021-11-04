@@ -15,18 +15,18 @@ $(error DOCKER_VERSION is not set)
 endif
 
 build:
-	docker build --rm -t ${DOCKER_ARTIFACT}:latest .
+	docker build --rm -t ${DOCKER_ARTIFACT}:${DOCKER_VERSION} .
 
 delete:
-	docker image rm ${DOCKER_ARTIFACT}:latest
+	docker image rm ${DOCKER_ARTIFACT}:${DOCKER_VERSION}
+	docker image rm ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:${DOCKER_VERSION}
 
 tag:
-	docker tag ${DOCKER_ARTIFACT}:latest ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:latest
-	docker tag ${DOCKER_ARTIFACT}:latest ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:${DOCKER_VERSION}
+	docker tag ${DOCKER_ARTIFACT}:${DOCKER_VERSION} ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:${DOCKER_VERSION}
 
-push:
+push: tag
 	docker login -u admin -p admin1234 ${DOCKER_REGISTRY}
-	docker push -a ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}
+	docker push ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:${DOCKER_VERSION}
 
 run:
 	docker run --rm --name ${DOCKER_ARTIFACT} -p 8000:80 -e LOG_LEVEL=debug -e MAX_WORKERS=1 \
