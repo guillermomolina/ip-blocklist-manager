@@ -25,7 +25,7 @@ tag:
 	docker tag ${DOCKER_ARTIFACT}:${DOCKER_VERSION} ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:${DOCKER_VERSION}
 
 push: tag
-	docker login -u admin -p admin1234 ${DOCKER_REGISTRY}
+	docker login -u admin -p 3ntradA9 ${DOCKER_REGISTRY}
 	docker push ${DOCKER_REGISTRY}/${DOCKER_ARTIFACT}:${DOCKER_VERSION}
 
 run:
